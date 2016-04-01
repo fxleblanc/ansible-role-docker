@@ -25,14 +25,17 @@
     - apt_cache
 
 - name: Purge the old repo if it exists
-  apt: name=lxc-docker purge=yes
+  apt: name={{ item }} purge=yes
+  with_items:
+    - "lxc-docker*"
+    - "docker.io*"
   ignore_errors: yes
   tags:
     - docker
     - apt_purge
 
 - name: Install docker package
-  apt: name=lxc-docker state=present
+  apt: name=docker-engine state=present
   notify: Start Docker
   tags:
     - docker
