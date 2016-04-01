@@ -1,4 +1,4 @@
-ansible_role_docker
+ansible-role-docker
 =========
 
 An Ansible role to install Docker in Debian or Ubuntu.
@@ -10,12 +10,17 @@ Requirements
 
 64bit Debian / Ubuntu
 
+installation
+------------
+
+    ansible-galaxy install lexrus.ansible-role-docker
+
 Example Playbook
 ----------------
 
     - hosts: servers
       roles:
-         - { role: lexrus.docker }
+         - { role: lexrus.ansible-role-docker }
 
 License
 -------
