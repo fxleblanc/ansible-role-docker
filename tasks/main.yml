@@ -1,5 +1,5 @@
 ---
 # Main task to install docker
 
-- include: Fedora.yml
-  when: ansible_distribution == "Fedora"
+- name: Insure package is enabled
+  package: name=docker state=latest

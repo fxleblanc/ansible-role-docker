@@ -1,0 +1,26 @@
+#!/bin/bash
+#
+# Test script
+#
+run_opts="--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+
+# Pull centos7 image
+docker pull geerlingguy/docker-centos7-ansible:latest
+
+# Generate temporary container id
+container_id="ansible"
+
+# Run container in detached state.
+docker run --detach --name $container_id --volume=$(pwd):/etc/ansible/roles/docker:ro $run_opts geerlingguy/docker-centos7-ansible:latest /usr/lib/systemd/systemd
+
+# Ansible syntax check.
+docker exec --tty $container_id env TERM=xterm ansible-playbook /etc/ansible/roles/docker/test.yml --syntax-check
+
+# Test role.
+docker exec --tty $container_id env TERM=xterm ansible-playbook /etc/ansible/roles/docker/test.yml
+
+# Stop container
+docker stop $container_id
+
+# Remove container
+docker rm $container_id

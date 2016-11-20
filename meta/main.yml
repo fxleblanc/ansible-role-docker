@@ -1,23 +1,14 @@
 galaxy_info:
-  author: Lex Tang
-  description: An Ansible role to install Docker in Debian or Ubuntu
-  company: No NDA Inc.
-  license: BSD
+  author: Félix Leblanc
+  description: Ansible role to install docker on CentOS
+  license: GPL
 
   min_ansible_version: 1.8
 
   platforms:
-  - name: Ubuntu
+  - name: CentOS
     versions:
-      - trusty
-      - wily
-  - name: Debian
-    versions:
-      - jessie
-      - wheezy
+      - 7
 
   galaxy_tags:
-    - system
     - docker
-
-dependencies: []
