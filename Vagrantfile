@@ -1,7 +1,9 @@
 Vagrant.configure(2) do |config|
+    # Default box
     config.vm.box = "centos/7"
-    config.vm.provision "shell", inline: "sudo mkdir -p /etc/ansible/roles/docker && sudo rsync -rv /vagrant/ /etc/ansible/roles/docker/ "
-    config.vm.provision "ansible_local" do |ansible|
+    # Start the test playbook from the host
+    config.vm.provision "ansible" do |ansible|
       ansible.playbook = "test.yml"
+      ansible.verbose = 'vv'
     end
 end
