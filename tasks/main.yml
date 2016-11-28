@@ -3,3 +3,4 @@
 
 - name: Insure package is enabled
   package: name=docker state=latest
+  notify: start docker
