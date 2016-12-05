@@ -1,6 +1,2 @@
----
-# Main task to install docker
-
-- name: Insure package is enabled
-  package: name=docker state=latest
-  notify: start docker
+- include: install.yml
+- include: start.yml
